@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
+import SeasonDisplay from './SeasonDisplay'
 
-/*
-Functional Component
-const App = () =>{
+
+//Functional Component
+/*const App = () =>{
 
      
     window.navigator.geolocation.getCurrentPosition(
@@ -16,33 +17,55 @@ const App = () =>{
             Latitude:
         </div>
     );
-};
-*/
+};*/
+
 
 /* class componenet */
-export default class App extends React.Component {
-    constructor (props){
-        super(props);
-        this.state = {lat: null};
+export default class App extends React.Component {   
 
+    
+    /*constructor(props){
+        super(props);
+        this.state = {lat: null, errorMessege: ''};
+
+    window.navigator.geolocation.getCurrentPosition(
+        position => {
+            this.setState({lat: position.coords.latitude});
+        },
+        err => {
+            this.setState({errorMessege: err.message});
+        }
+    )
+    }*/
+
+    state = {lat: null, errorMessege: ''};
+
+    componentDidMount(){
         window.navigator.geolocation.getCurrentPosition(
-            (position) => {
-                //WE MUST CALL setState for update!!!!!
-                this.setState({lat: position.coords.latitude})
-            },
-            (err) => console.log(err)
-        );
-        
+            (position) => this.setState({lat: position.coords.latitude}),
+            (err) => this.state({errorMessege: err.message})
+        )
+        }
+    
+
+    componentDidUpdate(){
+        console.log('My component is re-redered')
     }
 
 
     render() {
         
-        return (
-            <div>
-            Latitude: {this.state.lat}
-            </div>
-        )
+            if(this.state.errorMessege && !this.state.lat){
+            return <div> Error: {this.state.errorMessege}</div>
+            }
+            if(!this.state.errorMessege && this.state.lat){
+            return (
+                    <div> 
+                        <SeasonDisplay lat={this.state.lat}/> 
+                    </div>
+                    );
+            }
+            return <div>Loading</div>
     }
 }
 
