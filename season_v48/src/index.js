@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import SeasonDisplay from './SeasonDisplay'
+import Spinner from './Spinner'
 
 
 //Functional Component
@@ -18,7 +19,6 @@ import SeasonDisplay from './SeasonDisplay'
         </div>
     );
 };*/
-
 
 /* class componenet */
 export default class App extends React.Component {   
@@ -43,7 +43,7 @@ export default class App extends React.Component {
     componentDidMount(){
         window.navigator.geolocation.getCurrentPosition(
             (position) => this.setState({lat: position.coords.latitude}),
-            (err) => this.state({errorMessege: err.message})
+            (err) => this.setState({errorMessege: err.message})
         )
         }
     
@@ -52,20 +52,36 @@ export default class App extends React.Component {
         console.log('My component is re-redered')
     }
 
+    renderContent(){
+        if(this.state.errorMessege && !this.state.lat){
+            return <div> Error: {this.state.errorMessege}</div>
+        }
+    
+        if(!this.state.errorMessege && this.state.lat){
+            return (
+                <div> 
+                <SeasonDisplay lat={this.state.lat}/> 
+                </div>
+            );
+        }            
+        
+            return (
+                <div>
+                        <Spinner message='Share location with me? :)'/>
+                </div>
+                );
+    }
+
+
 
     render() {
-        
-            if(this.state.errorMessege && !this.state.lat){
-            return <div> Error: {this.state.errorMessege}</div>
-            }
-            if(!this.state.errorMessege && this.state.lat){
-            return (
-                    <div> 
-                        <SeasonDisplay lat={this.state.lat}/> 
-                    </div>
-                    );
-            }
-            return <div>Loading</div>
+        return(
+        <React.Fragment>
+            <div className={`.border`}>
+                {this.renderContent()}
+            </div>
+        </React.Fragment>
+    );            
     }
 }
 
