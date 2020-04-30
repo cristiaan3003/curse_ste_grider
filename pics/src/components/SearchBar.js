@@ -5,17 +5,17 @@ class SearchBar extends React.Component{
     state = { term: ''}
 
     
-    onFormSubmitevent = ggg =>{
+    onFormSubmit = ggg =>{
         ggg.preventDefault();
 
-        console.log(this.state.term);
+        this.props.runMeWhenUserPressEnter(this.state.term);
     }
 
     render(){
         return (
             <React.Fragment>
                 <div className='ui segment'>
-                    <form className='ui form' onSubmit={this.onFormSubmitevent}>
+                    <form className='ui form' onSubmit={this.onFormSubmit}>
                         <div className='field'>
                             <label>Image Seach</label>
                             <input type='text' 
