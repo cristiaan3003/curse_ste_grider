@@ -23,7 +23,6 @@ class  App extends React.Component {
                 <div className='ui container' style={{ marginTop : '10px'}}>
                         <SearchBar runMeWhenUserPressEnter={this.onSearchSubmit}></SearchBar>
                         <ImageList images = {this.state.images}></ImageList>
-                        {this.state.images.length}
                 </div>
             </React.Fragment>
         );
