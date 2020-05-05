@@ -1,12 +1,23 @@
 import React from 'react';
+import './VideoItem.css';
 
-export default class VideoItem extends React.Component{
+const VideoItem = ({video, onVideoSelectedItem})=>{
 
-    render(){
         return (
-            <div>
-                VideoITem
+            <div className= 'video-item item' onClick={() => onVideoSelectedItem(video)}>
+                <img 
+                className= 'ui image' 
+                src= {video.snippet.thumbnails.medium.url}
+                alt= {video.snippet.title}
+                />
+                <div className='content'>
+                    <div className='header'> {video.snippet.title}</div>
+
+                </div>
+                
             </div>
+
         );
-    }
 }
+
+export default VideoItem;
