@@ -26,7 +26,7 @@ class PostList extends React.Component{
                                         </div>
                                         <UserHeader userId={post.userId}/>
                                     </div>
-                            </div>       
+                            </div>
                                 
                         </Fragment>            
                 );});
