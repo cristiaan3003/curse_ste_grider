@@ -3,7 +3,7 @@ import React from 'react';
 const StreamEdit = () =>{
     return (
         <React.Fragment>
-            <div>StreamCreate</div>
+            <div>StreamEdit</div>
         </React.Fragment>
     );
 };

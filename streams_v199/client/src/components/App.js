@@ -1,21 +1,30 @@
 import React from 'react';
-import {BrowserRouter, Router} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 
-
-const PageOne = () =>{
-    return <div> Page one</div>
-}
-
-const PageTwo = () =>{
-    return <div> Page two</div>
-}
-
+import StreamCreate from './streams/StreamCreate'
+import StreamDelete from './streams/StreamDelete'
+import StreamEdit from './streams/StreamEdit'
+import StreamList from './streams/StreamList'
+import StreamShow from './streams/StreamShow'
+import Header from './Header'
 
 const App = () =>{
     return (
         <React.Fragment>
-            <div>
-                App
+            <div className='ui container'>
+            
+            <div >
+                <BrowserRouter>
+                <div>
+                    <Header />
+                    <Route  path='/' exact component={StreamList}/>
+                    <Route  path='/stream/new' exact component={StreamCreate}/>
+                    <Route  path='/stream/delete' exact component={StreamDelete}/>
+                    <Route  path='/stream/edit' exact component={StreamEdit}/>
+                    <Route  path='/stream/show' exact component={StreamShow}/>
+                </div>
+                </BrowserRouter>
+            </div>
             </div>
         </React.Fragment>
 

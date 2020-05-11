@@ -3,7 +3,7 @@ import React from 'react';
 const StreamDelete = () =>{
     return (
         <React.Fragment>
-            <div>StreamCreate</div>
+            <div>StreamDelete</div>
         </React.Fragment>
     );
 };
