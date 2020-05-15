@@ -1,29 +1,10 @@
 {
   "streams": [
     {
-      "title": "asdas",
-      "description": "da",
+      "title": "asda",
+      "description": "dasdad",
+      "userId": "115169116522062339185",
       "id": 1
-    },
-    {
-      "title": "otro stream ",
-      "description": "otros descrips",
-      "id": 2
-    },
-    {
-      "title": "pelicual 3",
-      "description": "terminatosr",
-      "id": 3
-    },
-    {
-      "title": "santa fe",
-      "description": "laguna",
-      "id": 4
-    },
-    {
-      "title": "tostado",
-      "description": "sol",
-      "id": 5
     }
   ]
 }
