@@ -15,17 +15,23 @@ class StreamDelete extends React.Component{
         this.props.fetchStream(this.props.match.params.id);
     }
 
+    constructor(props){
+        super(props);
+        this.deleteStream = (id) => this.props.deleteStream.bind(this,id);
+    }
+
     renderActions(){        
-        return(
+    return(
             <React.Fragment>
-                <button 
-                
-                onClick={ () => this.props.deleteStream((this.props.match.params.id))} // OK
-                //onClick={ this.props.deleteStream((this.props.match.params.id))}//NO:execute every render
-                className="ui primary button">Delete</button>
-                <Link to='/' className="ui button">Cancel</Link>
-            </React.Fragment>
-        );
+            <button 
+            //two solution for "onClick" event call to deleteStream
+            onClick={this.deleteStream((this.props.match.params.id))} // bind
+            //onClick={ () => this.props.deleteStream((this.props.match.params.id))} // OK
+            //onClick={ this.props.deleteStream((this.props.match.params.id))}//NO:exec every render auto
+            className="ui primary button">Delete</button>
+            <Link to='/' className="ui button">Cancel</Link>
+        </React.Fragment>
+    );
     }
     
 
