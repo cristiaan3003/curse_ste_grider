@@ -1,6 +1,6 @@
 #  React - Redux (Udemy Course)
 
-Hi! This is a course [React Udemy](https://www.udemy.com/course/react-redux/) I take and code all examples and clases videos. 48 hours of videos. Stephen Grider course.
+Hi! This is a course [React Udemy](https://www.udemy.com/course/react-redux/) I coding all examples and clases videos. 48 hours of videos. Stephen Grider course.
 
 # Files
 
