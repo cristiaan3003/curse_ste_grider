@@ -1,56 +1,33 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import ReactDOM from 'react-dom'
 import SeasonDisplay from './SeasonDisplay'
 import Spinner from './Spinner'
+import useLocation from './useLocation'
 
-
-//Functional Component
-/*const App = () =>{
-
-     
-    window.navigator.geolocation.getCurrentPosition(
-        (position) => console.log(position),
-        (err) => console.log(err)
-    );
-
+/*Functiona Componenet*/
+/*WITH HOOKS*/
+const App = () =>{
+    
+    const [lat,errorMessage] = useLocation();
+    let content;
+    if (errorMessage){
+        content = <div>Error: {errorMessage}</div>
+        }else if (lat){
+            content = <SeasonDisplay lat={lat}/> 
+        }else{
+            content = <Spinner message='Share location with me? :)'/>
+        }
     return(
-        <div>
-            Latitude:
+        <div className="border red">
+            {content}
         </div>
     );
-};*/
+};
 
 /* class componenet */
-export default class App extends React.Component {   
+/* WITHOUT HOOKS */
+/*export default class App extends React.Component {   
 
-    
-    /*constructor(props){
-        super(props);
-        this.state = {lat: null, errorMessege: ''};
-
-    window.navigator.geolocation.getCurrentPosition(
-        position => {
-            this.setState({lat: position.coords.latitude});
-        },
-        err => {
-            this.setState({errorMessege: err.message});
-        }
-    )
-    }*/
-
-    state = {lat: null, errorMessege: ''};
-
-    componentDidMount(){
-        window.navigator.geolocation.getCurrentPosition(
-            (position) => this.setState({lat: position.coords.latitude}),
-            (err) => this.setState({errorMessege: err.message})
-        )
-        }
-    
-
-    componentDidUpdate(){
-        console.log('My component is re-redered')
-    }
 
     renderContent(){
         if(this.state.errorMessege && !this.state.lat){
@@ -83,7 +60,7 @@ export default class App extends React.Component {
         </React.Fragment>
     );            
     }
-}
+}*/
 
 
 ReactDOM.render(<App/>,document.querySelector('#root'));
