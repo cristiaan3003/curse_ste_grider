@@ -4,13 +4,13 @@ import ResourseList from './ResourseList'
 
 
 const App = () =>{
-        const [resourse, setResource] = useState('posts');
+        const [resource, setResource] = useState('posts');
         return(
             <div>
                 <button onClick={() => setResource('posts')}>posts</button>
                 <button onClick={() => setResource('todos')}>todos</button>
                 <br/>
-                <ResourseList resourse={resourse}></ResourseList>
+                <ResourseList resource={resource}></ResourseList>
                 
             </div>
         );
